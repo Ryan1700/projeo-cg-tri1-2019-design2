@@ -15,10 +15,12 @@ private float SpeedFactor = 1f;
     void Update()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
 
-        float So = transform.position.x;
-        float S = So + horizontalInput * SpeedFactor * Time.deltaTime;
-        transform.position = new Vector3(S, transform.position.y, transform.position.x);
+        Vector3 velocity = new Vector3(horizontalInput, verticalInput, 0f) * SpeedFactor;
+
+       
+        transform.position = transform.position + velocity * Time.deltaTime;
         
     }
 }
