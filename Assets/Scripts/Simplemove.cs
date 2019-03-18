@@ -5,7 +5,7 @@ using UnityEngine;
 public class Simplemove : MonoBehaviour
 {
     [SerializeField]
-private float SpeedFacor = 1f;
+private float SpeedFactor = 1f;
     void Start()
     {
         
@@ -14,8 +14,10 @@ private float SpeedFacor = 1f;
     // Update is called once per frame
     void Update()
     {
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
         float So = transform.position.x;
-        float S = So + SpeedFacor * Time.deltaTime;
+        float S = So + horizontalInput * SpeedFactor * Time.deltaTime;
         transform.position = new Vector3(S, transform.position.y, transform.position.x);
         
     }
