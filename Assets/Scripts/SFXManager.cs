@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static SFXManager instance = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public GameObject coinParticles;
+
+    void Awake()
+    {if (instance == null)
+        {
+            instance = this;
+        }
+
     }
+    public void ShowCoinPartices(GameObject obj)
+    {
+        GameObject particles = Instantiate(coinParticles, obj.transform.position, Quaternion.identity);
+        GameObject tape = GameObject.Find("Tape");
+       particles.transform.SetParent(tape.transform);
+
+    }
+   
 }
