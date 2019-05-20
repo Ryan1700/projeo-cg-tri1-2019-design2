@@ -9,18 +9,17 @@ public class SFXManager : MonoBehaviour
     public GameObject coinParticles;
 
     void Awake()
-    {if (instance == null)
+    {
+        if (instance == null)
         {
             instance = this;
         }
-
     }
-    public void ShowCoinPartices(GameObject obj)
+
+    public void ShowCoinParticles(GameObject obj)
     {
         GameObject particles = Instantiate(coinParticles, obj.transform.position, Quaternion.identity);
         GameObject tape = GameObject.Find("Tape");
-       particles.transform.SetParent(tape.transform);
-
+        particles.transform.SetParent(tape.transform);
     }
-   
 }
