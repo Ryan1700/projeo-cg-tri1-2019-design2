@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class SceneManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    public static SceneManager instance = null;
+    public static LevelManager instance = null;
 
     [SerializeField]
-    private Vector3 TapeSpeed = new Vector3(-2f, 0f, 0f); 
+    private Vector3 TapeSpeed = new Vector3(-2f, 0f, 0f);
     [SerializeField]
     private Transform Tape = null;
 
@@ -16,24 +16,28 @@ public class SceneManager : MonoBehaviour
 
     SceneData sceneData = new SceneData();
 
-    void Awake() {
+    void Awake()
+    {
         Assert.IsNotNull(Tape);
-        if (instance == null) {
+        if (instance == null)
+        {
             instance = this;
         }
     }
-    
+
     void Update()
     {
         Tape.position = Tape.position + TapeSpeed * Time.deltaTime;
         DisplayHudData();
     }
 
-    public void IncrementCoinCount() {
+    public void IncrementCoinCount()
+    {
         sceneData.coinCount++;
     }
 
-    void DisplayHudData() {
+    void DisplayHudData()
+    {
         uiComponents.hud.txtCoinCount.text = "x " + sceneData.coinCount;
     }
 }
